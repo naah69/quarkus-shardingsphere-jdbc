@@ -1,24 +1,43 @@
 package io.quarkiverse.shardingsphere.jdbc.it;
 
-public class Account {
-    private int account_id;
-    private int user_id;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "t_account")
+public class Account extends PanacheEntityBase {
+
+    @Id
+    private int accountId;
+    private int userId;
     private String status;
 
-    public int getAccount_id() {
-        return account_id;
+    public Account() {
     }
 
-    public void setAccount_id(int account_id) {
-        this.account_id = account_id;
+    public Account(int accountId, int userId, String status) {
+        this.accountId = accountId;
+        this.userId = userId;
+        this.status = status;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getStatus() {
